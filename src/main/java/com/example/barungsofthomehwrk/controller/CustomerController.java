@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping(value = CustomerController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CustomerController {
 
-    static final String REST_URL = "api/customer";
+    static final String REST_URL = "/api/customer";
     private final CustomerService customerService;
 
     @Autowired
