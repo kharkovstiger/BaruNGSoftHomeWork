@@ -14,6 +14,6 @@ public interface CrudOrderRepository extends CrudRepository<Order, Long>{
     @Override
     boolean exists(Long aLong);
 
-    @Query(value = "{'customerId' : ?0}")
-    List<Order> findByCustomer(Long id);
+//    @Query(value = "{'customerId' : ?0}")
+//    List<Order> findByCustomer(Long id);
 }

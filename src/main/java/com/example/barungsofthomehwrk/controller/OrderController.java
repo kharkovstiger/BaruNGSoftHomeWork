@@ -31,14 +31,14 @@ public class OrderController {
         return orderService.getByCustomerId(id);
     }
 
-    @PostMapping(value = "/addOrder")
+    @PostMapping(value = "/addOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Order> addOrder(@RequestBody Order order){
         if (!orderValidator.validate(order))
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         return new ResponseEntity<>(orderService.addOrder(order),HttpStatus.OK);
     }
 
-    @PostMapping(value = "/editOrder")
+    @PostMapping(value = "/editOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Order> editOrder(@RequestBody Order order){
         if (!orderValidator.validate(order))
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
