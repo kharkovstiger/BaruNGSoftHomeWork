@@ -2,18 +2,18 @@ package com.example.barungsofthomehwrk.repository.order;
 
 
 import com.example.barungsofthomehwrk.model.Order;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface CrudOrderRepository extends CrudRepository<Order, Long>{
+public interface CrudOrderRepository extends MongoRepository<Order, String> {
     @Override
     Order save(Order order);
 
     @Override
-    boolean exists(Long aLong);
+    boolean exists(String id);
 
-//    @Query(value = "{'customerId' : ?0}")
-//    List<Order> findByCustomer(Long id);
+    @Query(value = "{'customerId' : ?0}")
+    List<Order> findByCustomer(String id);
 }

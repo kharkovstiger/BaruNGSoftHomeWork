@@ -18,7 +18,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getByCustomerId(Long id) {
+    public List<Order> getByCustomerId(String id) {
         return orderRepository.getByCustomerId(id);
     }
 

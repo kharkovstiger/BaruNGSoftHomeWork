@@ -27,7 +27,7 @@ public class OrderController {
     }
 
     @GetMapping(value = "/getByCustomerId")
-    public List<Order> getByCustomerId(@PathParam("id") Long id){
+    public List<Order> getByCustomerId(@PathParam("id") String id){
         return orderService.getByCustomerId(id);
     }
 

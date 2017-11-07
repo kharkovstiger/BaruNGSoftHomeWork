@@ -12,5 +12,5 @@ public interface CustomerService {
 
     Customer editCustomer(Customer customer);
 
-    boolean isCustomer(Long customerId);
+    boolean isCustomer(String customerId);
 }

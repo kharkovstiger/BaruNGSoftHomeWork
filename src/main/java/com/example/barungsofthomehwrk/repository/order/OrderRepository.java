@@ -5,9 +5,9 @@ import com.example.barungsofthomehwrk.model.Order;
 import java.util.List;
 
 public interface OrderRepository {
-    List<Order> getByCustomerId(Long id);
+    List<Order> getByCustomerId(String id);
 
     Order save(Order order);
 
-    boolean isOrder(Long id);
+    boolean isOrder(String id);
 }

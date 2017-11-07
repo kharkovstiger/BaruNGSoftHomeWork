@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements com.example.barungsofthomehwrk.servi
     }
 
     @Override
-    public boolean isCustomer(Long customerId) {
+    public boolean isCustomer(String customerId) {
         return customerRepository.isCustomer(customerId);
     }
 }

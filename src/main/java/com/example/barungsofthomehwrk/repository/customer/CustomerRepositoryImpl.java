@@ -3,11 +3,9 @@ package com.example.barungsofthomehwrk.repository.customer;
 import com.example.barungsofthomehwrk.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-@Transactional
 public class CustomerRepositoryImpl implements CustomerRepository {
 
     private final CrudCustomerRepository crudCustomerRepository;
@@ -18,7 +16,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public boolean isCustomer(Long customerId) {
+    public boolean isCustomer(String customerId) {
         return crudCustomerRepository.exists(customerId);
     }
 
