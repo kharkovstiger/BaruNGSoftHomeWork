@@ -29,4 +29,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public Customer save(Customer customer) {
         return crudCustomerRepository.save(customer);
     }
+
+    @Override
+    public Customer getCustomerById(String id) {
+        return crudCustomerRepository.findOne(id);
+    }
 }

@@ -10,4 +10,6 @@ public interface CustomerRepository {
     List<Customer> getAllCustomers();
 
     Customer save(Customer customer);
+
+    Customer getCustomerById(String id);
 }

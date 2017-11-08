@@ -29,6 +29,11 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
+    @GetMapping(value = "/{id}")
+    public Customer getCustomerById(@PathVariable("id") String id){
+        return customerService.getCustomerById(id);
+    }
+
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
         if (!CustomerValidator.validate(customer))

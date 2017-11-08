@@ -36,4 +36,9 @@ public class CustomerServiceImpl implements com.example.barungsofthomehwrk.servi
     public boolean isCustomer(String customerId) {
         return customerRepository.isCustomer(customerId);
     }
+
+    @Override
+    public Customer getCustomerById(String id) {
+        return customerRepository.getCustomerById(id);
+    }
 }

@@ -13,4 +13,6 @@ public interface CustomerService {
     Customer editCustomer(Customer customer);
 
     boolean isCustomer(String customerId);
+
+    Customer getCustomerById(String id);
 }
