@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = OrderController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin
 public class OrderController {
 
     static final String REST_URL = "/api/order";
