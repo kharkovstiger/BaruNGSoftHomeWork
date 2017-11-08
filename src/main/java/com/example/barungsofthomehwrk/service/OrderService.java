@@ -10,5 +10,5 @@ public interface OrderService {
 
     Order addOrder(Order order);
 
-    Order editOrder(Order order);
+    Order getByOrderId(String id);
 }

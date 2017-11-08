@@ -30,4 +30,9 @@ public class OrderRepositoryImpl implements OrderRepository {
     public boolean isOrder(String id) {
         return crudOrderRepository.exists(id);
     }
+
+    @Override
+    public Order getByOrderId(String id) {
+        return crudOrderRepository.findOne(id);
+    }
 }

@@ -28,11 +28,6 @@ public class CustomerServiceImpl implements com.example.barungsofthomehwrk.servi
     }
 
     @Override
-    public Customer editCustomer(Customer customer) {
-        return !customerRepository.isCustomer(customer.getId())?null:customerRepository.save(customer);
-    }
-
-    @Override
     public boolean isCustomer(String customerId) {
         return customerRepository.isCustomer(customerId);
     }

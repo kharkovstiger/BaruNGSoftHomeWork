@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order editOrder(Order order) {
-        return orderRepository.isOrder(order.getId())?orderRepository.save(order):null;
+    public Order getByOrderId(String id) {
+        return orderRepository.getByOrderId(id);
     }
 }

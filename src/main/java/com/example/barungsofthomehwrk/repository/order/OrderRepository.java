@@ -10,4 +10,6 @@ public interface OrderRepository {
     Order save(Order order);
 
     boolean isOrder(String id);
+
+    Order getByOrderId(String id);
 }

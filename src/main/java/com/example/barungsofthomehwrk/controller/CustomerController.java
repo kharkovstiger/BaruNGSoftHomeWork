@@ -40,12 +40,4 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         return new ResponseEntity<>(customerService.addCustomer(customer),HttpStatus.OK);
     }
-
-    @PostMapping(value = "/edit", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Customer> editCustomer(@RequestBody Customer customer){
-        if (!CustomerValidator.validate(customer))
-            return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
-        Customer editedCustomer=customerService.editCustomer(customer);
-        return editedCustomer==null?new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED):new ResponseEntity<>(editedCustomer,HttpStatus.OK);
-    }
 }

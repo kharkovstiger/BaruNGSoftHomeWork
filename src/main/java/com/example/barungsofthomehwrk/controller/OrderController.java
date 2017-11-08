@@ -32,18 +32,15 @@ public class OrderController {
         return orderService.getByCustomerId(id);
     }
 
+    @GetMapping(value = "/{id}")
+    public Order getByOrderId(@PathVariable("id") String id){
+        return orderService.getByOrderId(id);
+    }
+
     @PostMapping(value = "/addOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Order> addOrder(@RequestBody Order order){
         if (!orderValidator.validate(order))
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         return new ResponseEntity<>(orderService.addOrder(order),HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/editOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Order> editOrder(@RequestBody Order order){
-        if (!orderValidator.validate(order))
-            return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
-        Order editedOrder=orderService.editOrder(order);
-        return editedOrder!=null?new ResponseEntity<>(editedOrder,HttpStatus.OK):new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
     }
 }
