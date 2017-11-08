@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class CustomerValidator {
 
     public static void validate(Customer customer) throws WrongEmail, WrongAge, WrongFirstName, WrongLastName {
-        if (customer.getEmail()==null || emailValidation(customer.getEmail()))
+        if (customer.getEmail()==null || !emailValidation(customer.getEmail()))
             throw new WrongEmail();
         if (customer.getAge()==null || customer.getAge()<=0)
             throw new WrongAge();
