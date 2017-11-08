@@ -7,6 +7,7 @@ import com.example.barungsofthomehwrk.exception.WrongQuantity;
 import com.example.barungsofthomehwrk.model.Order;
 import com.example.barungsofthomehwrk.service.OrderService;
 import com.example.barungsofthomehwrk.validator.OrderValidator;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +23,7 @@ public class OrderController {
 
     static final String REST_URL = "/api/order";
     private final OrderService orderService;
+    private final Gson gson=new Gson();
 
     @Autowired
     public OrderController(OrderService orderService) {
@@ -39,7 +41,7 @@ public class OrderController {
     }
 
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> addOrder(@RequestBody Order order){
+    public ResponseEntity<String> addOrder(@RequestBody Order order){
         try {
             OrderValidator.validate(order);
         } catch (WrongQuantity wrongQuantity) {
@@ -51,6 +53,6 @@ public class OrderController {
         } catch (WrongDate wrongDate) {
             return new ResponseEntity<>("Wrong date", HttpStatus.UNPROCESSABLE_ENTITY);
         }
-        return new ResponseEntity<>(orderService.addOrder(order),HttpStatus.OK);
+        return new ResponseEntity<>(gson.toJson(orderService.addOrder(order)),HttpStatus.OK);
     }
 }

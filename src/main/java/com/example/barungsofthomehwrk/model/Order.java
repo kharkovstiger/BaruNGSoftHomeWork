@@ -5,11 +5,12 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Document(collection = "Order")
-public class Order {
+public class Order implements Serializable{
     @Id
     private String id;
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
