@@ -23,12 +23,10 @@ public class OrderController {
 
     static final String REST_URL = "/api/order";
     private final OrderService orderService;
-    private final OrderValidator orderValidator;
 
     @Autowired
-    public OrderController(OrderService orderService, OrderValidator orderValidator) {
+    public OrderController(OrderService orderService) {
         this.orderService = orderService;
-        this.orderValidator = orderValidator;
     }
 
     @GetMapping(value = "/getByCustomerId")
@@ -44,7 +42,7 @@ public class OrderController {
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> addOrder(@RequestBody Order order){
         try {
-            orderValidator.validate(order);
+            OrderValidator.validate(order);
         } catch (WrongQuantity wrongQuantity) {
             return new ResponseEntity<>("Wrong quantity", HttpStatus.UNPROCESSABLE_ENTITY);
         } catch (WrongPrice wrongPrice) {

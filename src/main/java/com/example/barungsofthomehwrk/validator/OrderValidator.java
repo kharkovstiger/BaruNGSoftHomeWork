@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderValidator {
 
-    public boolean validate(Order order) throws WrongQuantity, WrongPrice, WrongDescription, WrongDate {
+    public static void validate(Order order) throws WrongQuantity, WrongPrice, WrongDescription, WrongDate {
         if (order.getQuantity()==null || order.getQuantity() <= 0)
             throw new WrongQuantity();
         if (order.getPrice() == null && order.getPrice() <= 0)
@@ -21,6 +21,5 @@ public class OrderValidator {
             throw new WrongDescription();
         if (order.getDate()==null)
             throw new WrongDate();
-        return true;
     }
 }

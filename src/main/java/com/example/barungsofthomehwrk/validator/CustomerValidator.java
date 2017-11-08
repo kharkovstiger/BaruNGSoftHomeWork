@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class CustomerValidator {
 
-    public static boolean validate(Customer customer) throws WrongEmail, WrongAge, WrongFirstName, WrongLastName {
+    public static void validate(Customer customer) throws WrongEmail, WrongAge, WrongFirstName, WrongLastName {
         if (customer.getEmail()==null || emailValidation(customer.getEmail()))
             throw new WrongEmail();
         if (customer.getAge()==null || customer.getAge()<=0)
@@ -20,7 +20,6 @@ public class CustomerValidator {
             throw new WrongFirstName();
         if (customer.getLastName() == null || "".equals(customer.getLastName()))
             throw new WrongLastName();
-        return true;
     }
 
     private static final String EMAIL_PATTERN =
