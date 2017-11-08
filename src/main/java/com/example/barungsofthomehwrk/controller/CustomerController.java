@@ -45,13 +45,13 @@ public class CustomerController {
         try {
             CustomerValidator.validate(customer);
         } catch (WrongEmail wrongEmail) {
-            return new ResponseEntity<>("Wrong Email", HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(gson.toJson("Wrong Email"), HttpStatus.UNPROCESSABLE_ENTITY);
         } catch (WrongAge wrongAge) {
-            return new ResponseEntity<>("Wrong age", HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(gson.toJson("Wrong age"), HttpStatus.UNPROCESSABLE_ENTITY);
         } catch (WrongFirstName wrongFirstName) {
-            return new ResponseEntity<>("Wrong first name", HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(gson.toJson("Wrong first name"), HttpStatus.UNPROCESSABLE_ENTITY);
         } catch (WrongLastName wrongLastName) {
-            return new ResponseEntity<>("Wrong last name", HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(gson.toJson("Wrong last name"), HttpStatus.UNPROCESSABLE_ENTITY);
         }
         return new ResponseEntity<>(gson.toJson(customerService.addCustomer(customer)),HttpStatus.OK);
     }

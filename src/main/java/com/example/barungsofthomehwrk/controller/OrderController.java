@@ -45,13 +45,13 @@ public class OrderController {
         try {
             OrderValidator.validate(order);
         } catch (WrongQuantity wrongQuantity) {
-            return new ResponseEntity<>("Wrong quantity", HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(gson.toJson("Wrong quantity"), HttpStatus.UNPROCESSABLE_ENTITY);
         } catch (WrongPrice wrongPrice) {
-            return new ResponseEntity<>("Wrong price", HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(gson.toJson("Wrong price"), HttpStatus.UNPROCESSABLE_ENTITY);
         } catch (WrongDescription wrongDescription) {
-            return new ResponseEntity<>("Wrong description", HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(gson.toJson("Wrong description"), HttpStatus.UNPROCESSABLE_ENTITY);
         } catch (WrongDate wrongDate) {
-            return new ResponseEntity<>("Wrong date", HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(gson.toJson("Wrong date"), HttpStatus.UNPROCESSABLE_ENTITY);
         }
         return new ResponseEntity<>(gson.toJson(orderService.addOrder(order)),HttpStatus.OK);
     }
