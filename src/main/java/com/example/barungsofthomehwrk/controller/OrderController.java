@@ -42,6 +42,7 @@ public class OrderController {
 
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addOrder(@RequestBody Order order){
+        System.err.println(order);
         try {
             OrderValidator.validate(order);
         } catch (WrongQuantity wrongQuantity) {

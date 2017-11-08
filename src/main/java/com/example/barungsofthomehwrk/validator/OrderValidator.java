@@ -15,7 +15,7 @@ public class OrderValidator {
     public static void validate(Order order) throws WrongQuantity, WrongPrice, WrongDescription, WrongDate {
         if (order.getQuantity()==null || order.getQuantity() <= 0)
             throw new WrongQuantity();
-        if (order.getPrice() == null && order.getPrice() <= 0)
+        if (order.getPrice() == null || order.getPrice() <= 0)
             throw new WrongPrice();
         if (order.getDescription() == null || "".equals(order.getDescription()))
             throw new WrongDescription();
