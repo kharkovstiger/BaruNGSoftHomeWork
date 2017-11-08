@@ -37,7 +37,7 @@ public class OrderController {
         return orderService.getByOrderId(id);
     }
 
-    @PostMapping(value = "/addOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Order> addOrder(@RequestBody Order order){
         if (!orderValidator.validate(order))
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
