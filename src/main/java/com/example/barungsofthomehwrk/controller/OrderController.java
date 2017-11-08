@@ -1,5 +1,9 @@
 package com.example.barungsofthomehwrk.controller;
 
+import com.example.barungsofthomehwrk.exception.WrongDate;
+import com.example.barungsofthomehwrk.exception.WrongDescription;
+import com.example.barungsofthomehwrk.exception.WrongPrice;
+import com.example.barungsofthomehwrk.exception.WrongQuantity;
 import com.example.barungsofthomehwrk.model.Order;
 import com.example.barungsofthomehwrk.service.OrderService;
 import com.example.barungsofthomehwrk.validator.OrderValidator;
@@ -38,9 +42,18 @@ public class OrderController {
     }
 
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Order> addOrder(@RequestBody Order order){
-        if (!orderValidator.validate(order))
-            return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
+    public ResponseEntity<Object> addOrder(@RequestBody Order order){
+        try {
+            orderValidator.validate(order);
+        } catch (WrongQuantity wrongQuantity) {
+            return new ResponseEntity<>("Wrong quantity", HttpStatus.UNPROCESSABLE_ENTITY);
+        } catch (WrongPrice wrongPrice) {
+            return new ResponseEntity<>("Wrong price", HttpStatus.UNPROCESSABLE_ENTITY);
+        } catch (WrongDescription wrongDescription) {
+            return new ResponseEntity<>("Wrong description", HttpStatus.UNPROCESSABLE_ENTITY);
+        } catch (WrongDate wrongDate) {
+            return new ResponseEntity<>("Wrong date", HttpStatus.UNPROCESSABLE_ENTITY);
+        }
         return new ResponseEntity<>(orderService.addOrder(order),HttpStatus.OK);
     }
 }

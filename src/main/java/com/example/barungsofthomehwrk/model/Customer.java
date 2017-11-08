@@ -12,7 +12,7 @@ public class Customer {
     private String email;
     private String firstName;
     private String lastName;
-    private int age;
+    private Integer age;
 
     public Customer() {
     }

@@ -1,5 +1,9 @@
 package com.example.barungsofthomehwrk.controller;
 
+import com.example.barungsofthomehwrk.exception.WrongAge;
+import com.example.barungsofthomehwrk.exception.WrongEmail;
+import com.example.barungsofthomehwrk.exception.WrongFirstName;
+import com.example.barungsofthomehwrk.exception.WrongLastName;
 import com.example.barungsofthomehwrk.model.Customer;
 import com.example.barungsofthomehwrk.service.CustomerService;
 import com.example.barungsofthomehwrk.validator.CustomerValidator;
@@ -35,9 +39,18 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
-        if (!CustomerValidator.validate(customer))
-            return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
+    public ResponseEntity<Object> addCustomer(@RequestBody Customer customer){
+        try {
+            CustomerValidator.validate(customer);
+        } catch (WrongEmail wrongEmail) {
+            return new ResponseEntity<>("Wrong Email", HttpStatus.UNPROCESSABLE_ENTITY);
+        } catch (WrongAge wrongAge) {
+            return new ResponseEntity<>("Wrong age", HttpStatus.UNPROCESSABLE_ENTITY);
+        } catch (WrongFirstName wrongFirstName) {
+            return new ResponseEntity<>("Wrong first name", HttpStatus.UNPROCESSABLE_ENTITY);
+        } catch (WrongLastName wrongLastName) {
+            return new ResponseEntity<>("Wrong last name", HttpStatus.UNPROCESSABLE_ENTITY);
+        }
         return new ResponseEntity<>(customerService.addCustomer(customer),HttpStatus.OK);
     }
 }
