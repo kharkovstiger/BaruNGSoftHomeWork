@@ -16,7 +16,8 @@ public class OrderValidator {
     }
 
     public boolean validate(Order order) {
-        return customerService.isCustomer(order.getCustomerId()) && order.getQuantity() > 0 && order.getPrice() > 0 &&
-                order.getDescription() != null && !"".equals(order.getDescription()) && order.getDate()!=null;
+        return customerService.isCustomer(order.getCustomerId()) && order.getQuantity()!=null && order.getQuantity() > 0
+                && order.getPrice() != null && order.getPrice() > 0 && order.getDescription() != null
+                && !"".equals(order.getDescription()) && order.getDate()!=null;
     }
 }

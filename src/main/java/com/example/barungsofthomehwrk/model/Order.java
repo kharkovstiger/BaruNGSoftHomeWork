@@ -17,5 +17,5 @@ public class Order {
     private String customerId;
     private String description;
     private Double price;
-    private int quantity;
+    private Integer quantity;
 }
